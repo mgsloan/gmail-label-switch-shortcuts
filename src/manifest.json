@@ -2,7 +2,7 @@
   "name": "GMail Label Switch Shortcuts",
   "short_name": "GMail Label Keys",
   "author": "Michael Sloan",
-  "description": "Adds keyboard shortcuts to select next and previous labels",
+  "description": "Adds keyboard shortcuts to GMail that select next and previous labels.",
   "version": "1",
   "homepage_url": "https://github.com/mgsloan/gmail-label-switch-shortcuts",
   "content_scripts": [
