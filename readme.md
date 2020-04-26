@@ -18,4 +18,4 @@ Along with this repository, it is also available from the following:
   ](https://addons.mozilla.org/en-US/firefox/addon/gmail-label-switch-shortcuts/)
 -->
 
-![/etc/screenshot.png](explanatory screenshot)
+![explanatory screenshot](./etc/screenshot.png)
