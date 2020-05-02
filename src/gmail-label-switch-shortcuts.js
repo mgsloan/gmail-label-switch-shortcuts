@@ -79,9 +79,22 @@
     const labels = collectLabels();
     var index = getSelectedIndex(labels);
     if (index === -1) {
-      console.log('No label selected, so selecting first.');
-      labels[0].click();
-      return;
+      switch (direction) {
+      case 'up':
+        console.log('No label selected, so selecting last.');
+        labels[labels.length - 1].click();
+        return;
+      case 'down':
+        console.log('No label selected, so selecting second.');
+        if (labels.length > 1) {
+          labels[1].click();
+        } else {
+          labels[0].click();
+        }
+        return;
+      default:
+        throw 'invariant violation';
+      }
     }
     function go() {
       switch (direction) {
