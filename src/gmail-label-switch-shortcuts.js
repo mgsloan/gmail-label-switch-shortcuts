@@ -15,17 +15,21 @@
  */
 
 {
-  function collectLabels() {
+  function findLabelsDiv() {
     const h2s = document.getElementsByTagName('h2');
-    var labelH2;
+    var labelH2 = null;
     for (const h2 of h2s) {
       if (h2.innerText === 'Labels') {
         labelH2 = h2;
         break;
       }
     }
-    const labelDiv = labelH2.nextSibling;
-    const divsUnderLabels = labelDiv.getElementsByTagName('div');
+    return labelH2 ? labelH2.nextSibling : null;
+  }
+
+  function collectLabels() {
+    const labelsDiv = findLabelsDiv()
+    const divsUnderLabels = labelsDiv.getElementsByTagName('div');
     const results = [];
     for (const div of divsUnderLabels) {
       if (div.attributes['data-tooltip'] !== undefined) {
