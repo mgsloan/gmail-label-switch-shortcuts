@@ -32,7 +32,10 @@
     const divsUnderLabels = labelsDiv.getElementsByTagName('div');
     const results = [];
     for (const div of divsUnderLabels) {
-      if (div.attributes['data-tooltip'] !== undefined) {
+      // TODO: Other users may have other sections visible than just
+      // drafts. Could also have a label called that heh.
+      if (div.attributes['data-tooltip'] !== undefined &&
+         !div.innerText.startsWith('Drafts')) {
         results.push(div);
       }
     }
