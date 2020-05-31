@@ -15,6 +15,81 @@
  */
 
 {
+  document.addEventListener('keypress', ev => {
+    const element = e.target || e.srcElement;
+    const targetIsInput =
+          element.tagName == 'INPUT' ||
+          element.tagName == 'SELECT' ||
+          element.tagName == 'TEXTAREA' ||
+          element.isContentEditable;
+    if (targetIsInput) {
+      return;
+    } else if (ev.key === 'J') {
+      selectNextLabel('up');
+      ev.stopPropagation();
+    } else if (ev.key === 'K') {
+      selectNextLabel('down');
+      ev.stopPropagation();
+    }
+  });
+
+  function selectNextLabel(direction) {
+    const labels = collectLabels();
+    var index = getSelectedIndex(labels);
+    if (index === -1) {
+      switch (direction) {
+      case 'up':
+        console.log('No label selected, so selecting last.');
+        labels[labels.length - 1].click();
+        return;
+      case 'down':
+        console.log('No label selected, so selecting second.');
+        if (labels.length > 1) {
+          labels[1].click();
+        } else {
+          labels[0].click();
+        }
+        return;
+      default:
+        throw 'invariant violation';
+      }
+    }
+    function go() {
+      switch (direction) {
+      case 'up':
+        index += 1;
+        break;
+      case 'down':
+        index -= 1;
+        break;
+      default:
+        throw 'invariant violation';
+      }
+      if (index < 0) {
+        index = labels.length - 1;
+      } else if (index >= labels.length) {
+        index = 0;
+      }
+      const newLabel = labels[index];
+      const collapseState = getCollapseState(newLabel);
+      switch (collapseState) {
+      case 'normal':
+        labels[index].click();
+        break;
+      case 'expanded':
+        go();
+        break;
+      case 'collapsed':
+        labels[index].click();
+        setTimeout(() => { selectNextLabel(direction); }, 0);
+        break;
+      default:
+        throw 'invariant violation';
+      }
+    }
+    go();
+  }
+
   function findLabelsDiv() {
     const h2s = document.getElementsByTagName('h2');
     var labelH2 = null;
@@ -77,79 +152,4 @@
     }
     return 'normal';
   }
-
-  function selectNextLabel(direction) {
-    const labels = collectLabels();
-    var index = getSelectedIndex(labels);
-    if (index === -1) {
-      switch (direction) {
-      case 'up':
-        console.log('No label selected, so selecting last.');
-        labels[labels.length - 1].click();
-        return;
-      case 'down':
-        console.log('No label selected, so selecting second.');
-        if (labels.length > 1) {
-          labels[1].click();
-        } else {
-          labels[0].click();
-        }
-        return;
-      default:
-        throw 'invariant violation';
-      }
-    }
-    function go() {
-      switch (direction) {
-      case 'up':
-        index += 1;
-        break;
-      case 'down':
-        index -= 1;
-        break;
-      default:
-        throw 'invariant violation';
-      }
-      if (index < 0) {
-        index = labels.length - 1;
-      } else if (index >= labels.length) {
-        index = 0;
-      }
-      const newLabel = labels[index];
-      const collapseState = getCollapseState(newLabel);
-      switch (collapseState) {
-      case 'normal':
-        labels[index].click();
-        break;
-      case 'expanded':
-        go();
-        break;
-      case 'collapsed':
-        labels[index].click();
-        setTimeout(() => { selectNextLabel(direction); }, 0);
-        break;
-      default:
-        throw 'invariant violation';
-      }
-    }
-    go();
-  }
-
-  document.addEventListener('keypress', ev => {
-    const element = e.target || e.srcElement;
-    const targetIsInput =
-          element.tagName == 'INPUT' ||
-          element.tagName == 'SELECT' ||
-          element.tagName == 'TEXTAREA' ||
-          element.isContentEditable;
-    if (targetIsInput) {
-      return;
-    } else if (ev.key === 'J') {
-      selectNextLabel('up');
-      ev.stopPropagation();
-    } else if (ev.key === 'K') {
-      selectNextLabel('down');
-      ev.stopPropagation();
-    }
-  });
 }
