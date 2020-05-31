@@ -136,7 +136,15 @@
   }
 
   document.addEventListener('keypress', ev => {
-    if (ev.key === 'J') {
+    const element = e.target || e.srcElement;
+    const targetIsInput =
+          element.tagName == 'INPUT' ||
+          element.tagName == 'SELECT' ||
+          element.tagName == 'TEXTAREA' ||
+          element.isContentEditable;
+    if (targetIsInput) {
+      return;
+    } else if (ev.key === 'J') {
       selectNextLabel('up');
       ev.stopPropagation();
     } else if (ev.key === 'K') {
