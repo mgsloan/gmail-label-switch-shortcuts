@@ -16,7 +16,7 @@
 
 {
   document.addEventListener('keypress', ev => {
-    const element = e.target || e.srcElement;
+    const element = ev.target || ev.srcElement;
     const targetIsInput =
           element.tagName == 'INPUT' ||
           element.tagName == 'SELECT' ||
