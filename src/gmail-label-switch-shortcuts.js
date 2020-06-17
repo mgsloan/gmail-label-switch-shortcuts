@@ -110,7 +110,8 @@
       // TODO: Other users may have other sections visible than just
       // drafts. Could also have a label called that heh.
       if (div.attributes['data-tooltip'] !== undefined &&
-         !div.innerText.startsWith('Drafts')) {
+         !div.innerText.startsWith('Drafts') &&
+         div.style.display !== 'none') {
         results.push(div);
       }
     }
