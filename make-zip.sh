@@ -5,5 +5,5 @@
 
 rm -f gmail-label-switch-shortcuts.zip
 cd src
-zip ../gmail-label-switch-shortcuts.zip *.js *.json *.png
+zip ../gmail-label-switch-shortcuts.zip *
 cd ../
