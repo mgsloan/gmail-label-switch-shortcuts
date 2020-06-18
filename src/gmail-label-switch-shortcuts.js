@@ -103,7 +103,7 @@
   }
 
   function collectLabels() {
-    const labelsDiv = findLabelsDiv()
+    const labelsDiv = findLabelsDiv();
     const divsUnderLabels = labelsDiv.getElementsByTagName('div');
     const results = [];
     for (const div of divsUnderLabels) {
