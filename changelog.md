@@ -1,7 +1,7 @@
 # Version 2
 
-* Nothing changed, just resolving a version number collision in
-  uploaded versions of the extension.
+* Nothing substantively changed, just resolving a version number
+  collision in uploaded versions of the extension.
 
 # Version 1
 
