@@ -3,7 +3,7 @@
 First, install eslint:
 
 ```
-npm install eslint eslint-config-es5
+npm install eslint
 ```
 
 Then, run `eslint.sh` to use it to do checking.
