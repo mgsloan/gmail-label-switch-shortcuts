@@ -1,3 +1,8 @@
+# Version 4
+
+* No user-facing changes. Sets `content_security_policy` in extension
+  manifest.
+
 # Version 3
 
 * Another version number upload collision, this time because Mozilla
