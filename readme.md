@@ -21,3 +21,10 @@ label in GMail.
 -->
 
 ![explanatory screenshot](./etc/screenshot.png)
+
+# Is it useful to you?
+
+If you find this extension useful, feel free to show your appreciation
+on [Buy Me a Coffee](https://www.buymeacoffee.com/mgsloan).
+
+[Buy Me a Coffee]: https://www.buymeacoffee.com/mgsloan
