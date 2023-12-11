@@ -1,3 +1,7 @@
+# Version 5
+
+* Updates to extension manifest v3
+
 # Version 4
 
 * No user-facing changes. Sets `content_security_policy` in extension
