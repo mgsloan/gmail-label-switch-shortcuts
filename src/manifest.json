@@ -23,7 +23,13 @@
     }
   },
   "content_security_policy": {
-    "script-src": ["'self'"]
+    "script-src": "'self'"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{f68acaa5-759e-4fcb-ad68-e4c2751857dd}",
+      "strict_min_version": "109.0"
+    }
   },
   "manifest_version": 3
 }
