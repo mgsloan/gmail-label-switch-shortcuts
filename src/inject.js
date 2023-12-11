@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
-const scriptEl = document.createElement('script');
-scriptEl.setAttribute('src', chrome.extension.getURL('gmail-label-switch-shortcuts.js'));
-document.getElementsByTagName('body')[0].appendChild(scriptEl);
+const browser = window.browser || window.chrome;
+function inject(scriptName) {
+  const scriptEl = document.createElement('script');
+  scriptEl.setAttribute('src', browser.runtime.getURL(scriptName));
+  // In testing doesn't seem to be necessary, but may lead to more
+  // predictable execution order.
+  scriptEl.setAttribute('defer', 'defer');
+  document.getElementsByTagName('body')[0].appendChild(scriptEl);
+}
+
+inject('gmail-label-switch-shortcuts.js');
