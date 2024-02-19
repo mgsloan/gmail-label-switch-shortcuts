@@ -1,3 +1,9 @@
+# Version 6
+
+* Fixes functioning
+
+* Disables on `mail.google.com/chat/`
+
 # Version 5
 
 * Updates to extension manifest v3
