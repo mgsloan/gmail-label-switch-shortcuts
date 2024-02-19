@@ -91,7 +91,7 @@
   }
 
   function findLabelsDiv() {
-    const h2s = document.getElementsByTagName('h2');
+    const h2s = document.querySelectorAll('span[role=heading]');
     var labelH2 = null;
     for (const h2 of h2s) {
       if (h2.innerText === 'Labels') {
@@ -99,7 +99,7 @@
         break;
       }
     }
-    return labelH2 ? labelH2.nextSibling : null;
+    return labelH2 ? labelH2.parentElement.nextSibling : null;
   }
 
   function collectLabels() {
