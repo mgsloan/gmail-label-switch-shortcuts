@@ -15,23 +15,25 @@
  */
 
 {
-  document.addEventListener('keypress', ev => {
-    const element = ev.target || ev.srcElement;
-    const targetIsInput =
-          element.tagName == 'INPUT' ||
-          element.tagName == 'SELECT' ||
-          element.tagName == 'TEXTAREA' ||
-          element.isContentEditable;
-    if (targetIsInput) {
-      return;
-    } else if (ev.key === 'J') {
-      selectNextLabel('up');
-      ev.stopPropagation();
-    } else if (ev.key === 'K') {
-      selectNextLabel('down');
-      ev.stopPropagation();
-    }
-  });
+  if (!document.location.pathname.startsWith("/chat/")) {
+    document.addEventListener('keypress', ev => {
+      const element = ev.target || ev.srcElement;
+      const targetIsInput =
+            element.tagName == 'INPUT' ||
+            element.tagName == 'SELECT' ||
+            element.tagName == 'TEXTAREA' ||
+            element.isContentEditable;
+      if (targetIsInput) {
+        return;
+      } else if (ev.key === 'J') {
+        selectNextLabel('up');
+        ev.stopPropagation();
+      } else if (ev.key === 'K') {
+        selectNextLabel('down');
+        ev.stopPropagation();
+      }
+    });
+  }
 
   function selectNextLabel(direction) {
     const labels = collectLabels();
